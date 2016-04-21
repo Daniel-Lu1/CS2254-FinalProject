@@ -2,7 +2,7 @@ Use Cases:
 
 1. Find a Recipe
 Actor: Chef
-Precondition: none
+Precondition: enter ingredients, calorie restriction (optional), allergens (optional)
 Post condition: webpage displays recipes that satisfy ingredients listed.
 Queries: 
 SELECT A_Recipe.r_name as 'Recipe', A_Recipe.url as 'Instructions', A_RI.amount as 'Amount', A_Measure.m_name as 'Unit of Measure', A_Ingredient.i_name as 'Ingredient' FROM A_Recipe 
@@ -13,7 +13,7 @@ WHERE A_Ingredient.i_name = `chicken`;
 
 2. Save Recipe
 Actor: Chef
-Precondition: have a created account and be logged in
+Precondition: have a created account, be logged in, enter in ingredients.
 Postcondition: A_RU table is updated with new saved recipe id. 
 Queries:
 INSERT into A_RU(user_id, recipe_id) VALUES (1,2);
@@ -27,3 +27,4 @@ FROM A_Recipe
 JOIN A_RU on A_RU.recipe_id = A_Recipe.id
 JOIN Chef on Chef.id = A_RU.user_id
 WHERE Chef.id = `2`;
+
