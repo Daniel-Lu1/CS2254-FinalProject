@@ -13,3 +13,17 @@ INSERT INTO A_RI (recipe_id,ingredient_id,measure_id,amount) VALUES (2,2,NULL,1)
 INSERT INTO A_RI (recipe_id,ingredient_id,measure_id,amount) VALUES (2,3,NULL,1);
 INSERT INTO A_RI (recipe_id,ingredient_id,measure_id,amount) VALUES (2,4,NULL,1);
 INSERT INTO A_RI (recipe_id,ingredient_id,measure_id,amount) VALUES (2,11,NULL,10);
+
+
+
+
+//Ingredients and amounts for Fajitas
+INSERT INTO A_RI (recipe_id,ingredient_id,measure_id,amount) VALUES (5,5,5,0.5);
+INSERT INTO A_RI (recipe_id,ingredient_id,measure_id,amount) VALUES (5,4,5,0.5);
+INSERT INTO A_RI (recipe_id,ingredient_id,measure_id,amount) VALUES (5,6,NULL,6);
+INSERT INTO A_RI (recipe_id,ingredient_id,measure_id,amount) VALUES (5,1,NULL,1);
+INSERT INTO A_RI (recipe_id,ingredient_id,measure_id,amount) VALUES (5,7,1,1);
+INSERT INTO A_RI (recipe_id,ingredient_id,measure_id,amount) VALUES (5,8,3,2);
+INSERT INTO A_RI (recipe_id,ingredient_id,measure_id,amount) VALUES (5,9,3,2);
+INSERT INTO A_RI (recipe_id,ingredient_id,measure_id,amount) VALUES (5,10,1,1);
+
