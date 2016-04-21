@@ -28,3 +28,14 @@ JOIN A_RU on A_RU.recipe_id = A_Recipe.id
 JOIN Chef on Chef.id = A_RU.user_id
 WHERE Chef.id = `2`;
 
+4. Add New Recipes
+Actor: Admin
+Precondition: logged in to admin user account
+Postcondition: update A_Recipe table and A_RI table with new Recipe
+Queries: 
+INSERT INTO A_Recipe (id, r_name, url) VALUES (6,'Nachos','www.nachos.com');
+INSERT INTO A_RI (recipe_id,ingredient_id,measure_id,amount) VALUES (6,2,1,1);
+INSERT INTO A_RI (recipe_id,ingredient_id,measure_id,amount) VALUES (6,3,5,0.5);
+INSERT INTO A_RI (recipe_id,ingredient_id,measure_id,amount) VALUES (6,5,5,0.5);
+INSERT INTO A_RI (recipe_id,ingredient_id,measure_id,amount) VALUES (6,6,NULL,1);
+
