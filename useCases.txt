@@ -32,7 +32,7 @@ WHERE Chef.id = `2`;
 4. Register a Chef
 Actor: Chef
 Precondition: none
-Post condition: webpage displays "thank you for registeringî and has a link back to homepage, Chef table is updated with new Chef info
+Post condition: webpage displays "thank you for registering‚Äù and has a link back to homepage, Chef table is updated with new Chef info
 Queries:
 SELECT * FROM CHEF WHERE email = $email;      //check to see if they have already registered
 INSERT INTO CHEF (first_name, last_name, email, password) values ('John', 'Hancock', 'jhancock@gmail.com',  'sha1(password)');
@@ -61,7 +61,8 @@ Actor: Admin
 Precondition: logged in to admin user account
 PostCondition: email sent to users
 Queries:
-SELECT email FROM CHEF WHERE email == "jhancock@gmail.com";
+SELECT email FROM CHEF WHERE email == "jhancock@gmail.com"; //individual user
+SELECT email FROM CHEF; //all users
 
 8. Delete User 
 Actor: Admin
