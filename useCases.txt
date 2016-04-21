@@ -1,0 +1,13 @@
+Use Cases:
+
+1. Find a Recipe
+Actor: Chef
+Precondition: none
+Post condition: webpage displays recipes that satisfy ingredients listed.
+Queries: 
+SELECT A_Recipe.r_name as 'Recipe', A_Recipe.url as 'Instructions', A_RI.amount as 'Amount', A_Measure.m_name as 'Unit of Measure', A_Ingredient.i_name as 'Ingredient' FROM A_Recipe 
+JOIN A_RI on A_Recipe.id = A_RI.recipe_id
+JOIN A_Ingredient on A_Ingredient.id = A_RI.ingredient_id
+LEFT OUTER JOIN A_Measure on A_Measure.id = A_RI.measure_id
+WHERE A_Ingredient.i_name = `chicken`;
+
