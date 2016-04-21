@@ -11,3 +11,19 @@ JOIN A_Ingredient on A_Ingredient.id = A_RI.ingredient_id
 LEFT OUTER JOIN A_Measure on A_Measure.id = A_RI.measure_id
 WHERE A_Ingredient.i_name = `chicken`;
 
+2. Save Recipe
+Actor: Chef
+Precondition: have a created account and be logged in
+Postcondition: A_RU table is updated with new saved recipe id. 
+Queries:
+INSERT into A_RU(user_id, recipe_id) VALUES (1,2);
+
+3. Display Saved Recipes
+Actor: Chef
+Precondition: logged in to account
+Postcondition: display saved recipes
+SELECT A_Recipe.r_name as 'Recipe', A_Recipe.url as 'Instructions'
+FROM A_Recipe
+JOIN A_RU on A_RU.recipe_id = A_Recipe.id
+JOIN Chef on Chef.id = A_RU.user_id
+WHERE Chef.id = `2`;
