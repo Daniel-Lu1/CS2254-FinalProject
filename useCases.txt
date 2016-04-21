@@ -11,3 +11,15 @@ JOIN A_Ingredient on A_Ingredient.id = A_RI.ingredient_id
 LEFT OUTER JOIN A_Measure on A_Measure.id = A_RI.measure_id
 WHERE A_Ingredient.i_name = `chicken`;
 
+
+
+
+
+4. Register a Chef
+Actor: Chef
+Precondition: none
+Post condition: webpage displays "thank you for registering” and has a link back to homepage, Chef table is updated with new Chef info
+Queries:
+SELECT * FROM CHEF WHERE email = $email      //check to see if they have already registered
+INSERT INTO CHEF (first_name, last_name, email, password) values ('John', 'Hancock', 'jhancock@gmail.com',  'sha1(password)');
+
