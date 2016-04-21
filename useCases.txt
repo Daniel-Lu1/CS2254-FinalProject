@@ -28,17 +28,17 @@ JOIN A_RU on A_RU.recipe_id = A_Recipe.id
 JOIN Chef on Chef.id = A_RU.user_id
 WHERE Chef.id = `2`;
 
-<<<<<<< HEAD
+
 4. Register a Chef
 Actor: Chef
 Precondition: none
 Post condition: webpage displays "thank you for registering” and has a link back to homepage, Chef table is updated with new Chef info
 Queries:
-SELECT * FROM CHEF WHERE email = $email      //check to see if they have already registered
+SELECT * FROM CHEF WHERE email = $email;      //check to see if they have already registered
 INSERT INTO CHEF (first_name, last_name, email, password) values ('John', 'Hancock', 'jhancock@gmail.com',  'sha1(password)');
 
-=======
-4. Add New Recipes
+
+5. Add New Recipes
 Actor: Admin
 Precondition: logged in to admin user account
 Postcondition: update A_Recipe table and A_RI table with new Recipe
@@ -48,5 +48,26 @@ INSERT INTO A_RI (recipe_id,ingredient_id,measure_id,amount) VALUES (6,2,1,1);
 INSERT INTO A_RI (recipe_id,ingredient_id,measure_id,amount) VALUES (6,3,5,0.5);
 INSERT INTO A_RI (recipe_id,ingredient_id,measure_id,amount) VALUES (6,5,5,0.5);
 INSERT INTO A_RI (recipe_id,ingredient_id,measure_id,amount) VALUES (6,6,NULL,1);
->>>>>>> origin/master
+
+6. Manage User Accounts
+Actor: Admin
+Precondition: logged in to admin user account
+PostCondition: table with checkbox, id, first_name, last_name, email displayed
+Queries:
+SELECT id, first_name, last_name, email FROM CHEF;
+
+7. Send Email to User Accounts
+Actor: Admin
+Precondition: logged in to admin user account
+PostCondition: email sent to users
+Queries:
+SELECT email FROM CHEF WHERE email == "jhancock@gmail.com";
+
+8. Delete User 
+Actor: Admin
+Precondition: logged in to admin user account
+Postcondition: user record removed from chef table, saved recipes removed from A_RU table
+Queries:
+DELETE FROM CHEF WHERE id = 12;
+DELETE FROM A_RU WHERE user_id = 12;
 
