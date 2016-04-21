@@ -13,7 +13,7 @@ WHERE A_Ingredient.i_name = `chicken`;
 
 2. Save Recipe
 Actor: Chef
-Precondition: have a created account, be logged in, enter in ingredients.
+Precondition: have a created account, be logged in, enter in ingredients, after showing contents of recipe.
 Postcondition: A_RU table is updated with new saved recipe id. 
 Queries:
 INSERT into A_RU(user_id, recipe_id) VALUES (1,2);
@@ -72,3 +72,13 @@ Queries:
 DELETE FROM CHEF WHERE id = 12;
 DELETE FROM A_RU WHERE user_id = 12;
 
+9. Show Recipe Contents
+Actor: Chef
+Precondition: searched for a recipe
+Postcondition: display name, instructions, and ingredients for recipe
+Queries:
+SELECT A_Recipe.r_name as 'Recipe', A_Recipe.url as 'Instructions', A_RI.amount as 'Amount', A_Measure.m_name as 'Unit of Measure', A_Ingredient.i_name as 'Ingredient' FROM A_Recipe 
+JOIN A_RI on A_Recipe.id = A_RI.recipe_id
+JOIN A_Ingredient on A_Ingredient.id = A_RI.ingredient_id
+LEFT OUTER JOIN A_Measure on A_Measure.id = A_RI.measure_id
+WHERE A_Recipe.r_name = "tacos"
