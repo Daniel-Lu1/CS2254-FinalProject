@@ -1,0 +1,10 @@
+INSERT INTO A_RU(user_id, ingredient_id) values (1, 1);
+INSERT INTO A_RU(user_id, ingredient_id) values (2, 2);
+INSERT INTO A_RU(user_id, ingredient_id) values (2, 4);
+INSERT INTO A_RU(user_id, ingredient_id) values (1, 5);
+INSERT INTO A_RU(user_id, ingredient_id) values (1, 3);
+INSERT INTO A_RU(user_id, ingredient_id) values (3, 2);
+INSERT INTO A_RU(user_id, ingredient_id) values (4, 2);
+INSERT INTO A_RU(user_id, ingredient_id) values (5, 2);
+INSERT INTO A_RU(user_id, ingredient_id) values (6, 2);
+INSERT INTO A_RU(user_id, ingredient_id) values (7, 3);
