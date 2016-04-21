@@ -22,6 +22,12 @@ INSERT INTO A_RI (recipe_id,ingredient_id,measure_id,amount) VALUES (3,6,NULL,10
 INSERT INTO A_RI (recipe_id,ingredient_id,measure_id,amount) VALUES (3,8,4,5);
 INSERT INTO A_RI (recipe_id,ingredient_id,measure_id,amount) VALUES (3,9,4,5);
 
+//Ingredients and amounts for Enchilladas
+INSERT INTO A_RI (recipe_id,ingredient_id,measure_id,amount) VALUES (4,2,1,1);
+INSERT INTO A_RI (recipe_id,ingredient_id,measure_id,amount) VALUES (4,3,5,0.5);
+INSERT INTO A_RI (recipe_id,ingredient_id,measure_id,amount) VALUES (4,5,5,0.5);
+INSERT INTO A_RI (recipe_id,ingredient_id,measure_id,amount) VALUES (4,6,NULL,1);
+
 //Ingredients and amounts for Fajitas
 INSERT INTO A_RI (recipe_id,ingredient_id,measure_id,amount) VALUES (5,5,5,0.5);
 INSERT INTO A_RI (recipe_id,ingredient_id,measure_id,amount) VALUES (5,4,5,0.5);
