@@ -1,3 +1,4 @@
+//Ingredients and amounts for tacos
 INSERT INTO A_RI (recipe_id,ingredient_id,measure_id,amount) VALUES (1,1,NULL,1);
 INSERT INTO A_RI (recipe_id,ingredient_id,measure_id,amount) VALUES (1,2,NULL,2);
 INSERT INTO A_RI (recipe_id,ingredient_id,measure_id,amount) VALUES (1,3,1,1);
