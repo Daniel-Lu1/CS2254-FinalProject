@@ -1,0 +1,10 @@
+INSERT INTO A_Ingredient (i_name) VALUES ('lettuce');
+INSERT INTO A_Ingredient (i_name) VALUES ('tomatoes');
+INSERT INTO A_Ingredient (i_name) VALUES ('cheese');
+INSERT INTO A_Ingredient (i_name) VALUES ('beef');
+INSERT INTO A_Ingredient (i_name) VALUES ('chicken');
+INSERT INTO A_Ingredient (i_name) VALUES ('tortillas');
+INSERT INTO A_Ingredient (i_name) VALUES ('peppers');
+INSERT INTO A_Ingredient (i_name) VALUES ('sour cream');
+INSERT INTO A_Ingredient (i_name) VALUES ('guacamole');
+INSERT INTO A_Ingredient (i_name) VALUES ('beans');
