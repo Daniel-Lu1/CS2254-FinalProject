@@ -1,0 +1,23 @@
+#registerFieldset{
+	display: inline-block;
+}
+#firstName{
+	width: 93px;
+	float: left;
+}
+#lastName{
+	width: 93px;
+	float: right;
+}
+#nameWrong{
+	margin-top: 16px;
+}
+input[type="text"]{
+	width: 200px;
+}
+input[type="password"]{
+	width: 200px;
+}
+div.wrong{
+	color: red;
+}
