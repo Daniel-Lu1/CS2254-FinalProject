@@ -1,4 +1,9 @@
 # CS2254-FinalProject
+Cooking Website
+Nicholas Borisenko
+Daniel Lu
+Elijah A Waalkes
+
 Web Apps Final Project
 
 # please organize your files into folder/directories
