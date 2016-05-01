@@ -4,33 +4,11 @@
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 <body>
-	<pre>
-		<div id="result">
-		</div>
-	</pre>
-	<script>
-		$(document).ready(function(){
-			var request = $.ajax({
-					url: "https://api.edamam.com/search",
-					jsonp: "callback",
-					dataType: "jsonp",
-					data: {
-						q: "chicken",
-						//from:0,
-						//to:100,
-						//calories: "gte 250, lte 500",
-						//diet: "balanced",
-						api_id:  "61496f24",
-						api_key: "df682debbdd8c22dd3776834d4b83a41"
-					},
-					success: function(callback){
-						var len = callback.hits.length;
-						for(i=0; i<len;i++)
-							console.log(callback.hits[i].recipe.label);
-						console.log(len);
-					}
-			});
-		})
-	</script>
+	<div>
+		<form method="get" id="search" action="results.php">
+			<input type="text" name="name" id="name" placeholder="Enter a keyword...">
+			<input type="submit" name="submit" id="submit" value="Search">
+		</form>
+	</div>
 </body>
 </html>
