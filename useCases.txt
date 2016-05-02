@@ -37,26 +37,14 @@ Queries:
 SELECT * FROM CHEF WHERE email = $email;      //check to see if they have already registered
 INSERT INTO CHEF (first_name, last_name, email, password) values ('John', 'Hancock', 'jhancock@gmail.com',  'sha1(password)');
 
-
-5. Add New Recipes
-Actor: Admin
-Precondition: logged in to admin user account
-Postcondition: update A_Recipe table and A_RI table with new Recipe
-Queries: 
-INSERT INTO A_Recipe (id, r_name, url) VALUES (6,'Nachos','www.nachos.com');
-INSERT INTO A_RI (recipe_id,ingredient_id,measure_id,amount) VALUES (6,2,1,1);
-INSERT INTO A_RI (recipe_id,ingredient_id,measure_id,amount) VALUES (6,3,5,0.5);
-INSERT INTO A_RI (recipe_id,ingredient_id,measure_id,amount) VALUES (6,5,5,0.5);
-INSERT INTO A_RI (recipe_id,ingredient_id,measure_id,amount) VALUES (6,6,NULL,1);
-
-6. Manage User Accounts
+5. Manage User Accounts
 Actor: Admin
 Precondition: logged in to admin user account
 PostCondition: table with checkbox, id, first_name, last_name, email displayed
 Queries:
 SELECT id, first_name, last_name, email FROM CHEF;
 
-7. Send Email to User Accounts
+6. Send Email to User Accounts
 Actor: Admin
 Precondition: logged in to admin user account
 PostCondition: email sent to users
@@ -64,7 +52,7 @@ Queries:
 SELECT email FROM CHEF WHERE email == "jhancock@gmail.com"; //individual user
 SELECT email FROM CHEF; //all users
 
-8. Delete User 
+7. Delete User 
 Actor: Admin
 Precondition: logged in to admin user account
 Postcondition: user record removed from chef table, saved recipes removed from A_RU table
@@ -72,7 +60,7 @@ Queries:
 DELETE FROM CHEF WHERE id = 12;
 DELETE FROM A_RU WHERE user_id = 12;
 
-9. Show Recipe Contents
+8. Show Recipe Contents
 Actor: Chef
 Precondition: searched for a recipe
 Postcondition: display name, instructions, and ingredients for recipe
