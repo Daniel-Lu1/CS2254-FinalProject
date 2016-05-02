@@ -14,12 +14,12 @@
 	<legend>Become a Chef!</legend>
 	<form name="registerChefForm" id="registerChefForm" method="POST" action="registerChef.php" onsubmit="return validateForm();">
 		Name <br>
-		<input type="text" name="firstName" id="firstName" />
-		<input type="text" name="lastName" id="lastName" />
+		<input type="text" name="firstName" id="firstName" placeholder="First" />
+		<input type="text" name="lastName" id="lastName" placeholder="Last" />
 		<div id="nameWrong" class="wrong"></div>
 		<br> 
 		Email <br>
-		<input type="text" name="registerEmail" id="registerEmail" />
+		<input type="text" name="registerEmail" id="registerEmail" placeholder="example@website.com" />
 		<div id="emailWrong" class="wrong"></div>
 		<br>
 		Create Password <br>
