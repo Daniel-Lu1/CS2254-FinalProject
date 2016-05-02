@@ -5,17 +5,29 @@
 </head>
 <body>
 	<fieldset>
-	<form method="post" action="login.php">
-	<legend>Log in to your Chef Account!"</legend>
+	<legend>Log in to your Chef Account!</legend>
+	<form method="post" action="login.php" onsubmit="return validateForm()" name="myForm">
 	<label>E-mail: </label><br>
-	<input type="text" name="email">
+	<input type="text" name="email"><br>
 	<label>Password: </label><br>
-	<input type="password" name="password">
+	<input type="password" name="password" required><br>
 	<input name="submit" type="submit" value="Login ">
 	</form>
 	</fieldset>
 </body>
 </html>
 
+<script type="text/javascript">
+function validateForm(){
+	var x = document.forms["myForm"]["email"].value;
+	var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 
-	
+	if (!filter.test(x)){
+	alert("Enter a valid e-mail please.");
+	return false;
+	}
+	else{
+	return true;
+	}
+}
+</script>
