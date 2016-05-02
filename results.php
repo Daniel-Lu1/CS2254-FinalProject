@@ -16,6 +16,9 @@
 			<input type="submit" name="submit" id="submit" value="Search">
 		</form>
 	</div>
+	<div>
+		<table id="results"><tr><th>Recipe Name</th><th>Summary</th><th>Calories</th><th>Ingredients</th></tr></table>
+	</div>
 	<script>
 		$(document).ready(function(){
 			$("#submit").click(function(){
@@ -41,6 +44,15 @@
 					for(i=0; i<len;i++)
 						console.log(callback.hits[i].recipe.label);
 					console.log(len);
+					$("#results").html("");
+					$("#results").append("<tr><th>Recipe Name</th><th>Summary</th><th>Calories</th><th>Ingredients</th></tr>");
+					$.each(data, function(i, callback.hits){
+						$("#results").append("<tr><td>"+callback.hits.recipe.label+"</td><td>"+callback.hits.recipe.summary+"</td><td>"+callback.hits.recipe.calories+"</td><td><ul>");
+							$.each(data, function(i, callback.hits.recipe.ingredients)){
+								$("#results").append("<li>"+callback.hits.recipe.ingredient+"</li>");
+							};
+						$("#results").append("</ul></td></tr>");
+					});
 				}
 			});
 		};
