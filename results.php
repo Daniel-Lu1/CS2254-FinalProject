@@ -16,7 +16,7 @@
 			<input type="submit" name="submit" id="submit" value="Search">
 		</form>
 	</div>
-	<div>
+	<div class="datagrid">
 		<table id="results"><tr><th>Recipe Name</th><th>Summary</th><th>Calories</th><th>Ingredients</th></tr></table>
 	</div>
 	<script>
@@ -41,7 +41,7 @@
 				},
 				success: function(callback){
 					$("#results").html("");
-					$("#results").append("<tr><th>Recipe Name</th><th>Calories</th><th>Ingredients</th></tr>");
+					$("#results").append("<thead><tr><th>Recipe Name</th><th>Calories</th><th>Ingredients</th></tr></thead><tbody>");
 					var len = callback.hits.length;
 					for(i=0;i<len;i++){
 						var str1 = "<tr><td>"+callback.hits[i].recipe.label+"</td><td>"+callback.hits[i].recipe.calories+"</td><td><ul>";
@@ -59,6 +59,7 @@
 						var str = str1.concat(str2,str3);
 						$("#results").append(str);
 					};
+					$("#results").append("</tbody>");
 				}
 			});
 		};
