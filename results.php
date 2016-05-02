@@ -40,19 +40,25 @@
 					api_key: "df682debbdd8c22dd3776834d4b83a41"
 				},
 				success: function(callback){
-					var len = callback.hits.length;
-					for(i=0; i<len;i++)
-						console.log(callback.hits[i].recipe.label);
-					console.log(len);
 					$("#results").html("");
-					$("#results").append("<tr><th>Recipe Name</th><th>Summary</th><th>Calories</th><th>Ingredients</th></tr>");
-					$.each(data, function(i, callback.hits){
-						$("#results").append("<tr><td>"+callback.hits.recipe.label+"</td><td>"+callback.hits.recipe.summary+"</td><td>"+callback.hits.recipe.calories+"</td><td><ul>");
-							$.each(data, function(i, callback.hits.recipe.ingredients)){
-								$("#results").append("<li>"+callback.hits.recipe.ingredient+"</li>");
-							};
-						$("#results").append("</ul></td></tr>");
-					});
+					$("#results").append("<tr><th>Recipe Name</th><th>Calories</th><th>Ingredients</th></tr>");
+					var len = callback.hits.length;
+					for(i=0;i<len;i++){
+						var str1 = "<tr><td>"+callback.hits[i].recipe.label+"</td><td>"+callback.hits[i].recipe.calories+"</td><td><ul>";
+						var len2 = callback.hits[i].recipe.ingredients.length;
+						var s = "<li>";
+						var c = "</li>";
+						var str2 = "";
+						for(j=0;j<len2;j++){
+							var line = callback.hits[i].recipe.ingredients[j].text;
+							var st = s.concat(line);
+							var fin = st.concat(c);
+							str2 = str2.concat(fin);
+						};
+						var str3 = "</ul></td></tr>";
+						var str = str1.concat(str2,str3);
+						$("#results").append(str);
+					};
 				}
 			});
 		};
