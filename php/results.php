@@ -43,10 +43,10 @@
 				},
 				success: function(callback){
 					$("#results").html("");
-					$("#results").append("<thead><tr><th>Recipe Name</th><th>Calories</th><th>Ingredients</th></tr></thead><tbody>");
+					$("#results").append("<thead><tr><th>Image</th><th>Recipe Name</th><th>Calories</th><th>Ingredients</th></tr></thead><tbody>");
 					var len = callback.hits.length;
 					for(i=0;i<len;i++){
-						var str1 = "<tr><td>"+callback.hits[i].recipe.label+"</td><td>"+callback.hits[i].recipe.calories+"</td><td><ul>";
+						var str1 = "<tr><td class=\"hiddenURI\" style=\"display:none\">" + callback.hits[i].recipe.label + "</td><td><img src=\"" + callback.hits[i].recipe.image + "\" alt=\"foodpic\"></td><td>"+callback.hits[i].recipe.label+"</td><td>"+callback.hits[i].recipe.calories+"</td><td><ul>";
 						var len2 = callback.hits[i].recipe.ingredients.length;
 						var s = "<li>";
 						var c = "</li>";
@@ -115,7 +115,7 @@
 						$("#results").append("<thead><tr><th>Recipe Name</th><th>Calories</th><th>Ingredients</th></tr></thead><tbody>");
 						var len = callback.hits.length;
 						for(i=0;i<len;i++){
-							var str1 = "<tr><td>"+callback.hits[i].recipe.label+"</td><td>"+callback.hits[i].recipe.calories+"</td><td><ul>";
+							var str1 = "<tr><td class=\"hiddenURI\" style=\"display:none\">" + callback.hits[i].recipe.label + "</td><td><img src=\"" + callback.hits[i].recipe.image + "\" alt=\"foodpic\"></td><td>"+callback.hits[i].recipe.label+"</td><td>"+callback.hits[i].recipe.calories+"</td><td><ul>";
 							var len2 = callback.hits[i].recipe.ingredients.length;
 							var s = "<li>";
 							var c = "</li>";
@@ -152,7 +152,7 @@
 						$("#results").append("<thead><tr><th>Recipe Name</th><th>Calories</th><th>Ingredients</th></tr></thead><tbody>");
 						var len = callback.hits.length;
 						for(i=0;i<len;i++){
-							var str1 = "<tr><td>"+callback.hits[i].recipe.label+"</td><td>"+callback.hits[i].recipe.calories+"</td><td><ul>";
+							var str1 = "<tr><td class=\"hiddenURI\" style=\"display:none\">" + callback.hits[i].recipe.label + "</td><td><img src=\"" + callback.hits[i].recipe.image + "\" alt=\"foodpic\"></td><td>"+callback.hits[i].recipe.label+"</td><td>"+callback.hits[i].recipe.calories+"</td><td><ul>";
 							var len2 = callback.hits[i].recipe.ingredients.length;
 							var s = "<li>";
 							var c = "</li>";
@@ -186,10 +186,10 @@
 					},
 					success: function(callback){
 						$("#results").html("");
-						$("#results").append("<thead><tr><th>Recipe Name</th><th>Calories</th><th>Ingredients</th></tr></thead><tbody>");
+						$("#results").append("<thead><tr><th>Image</th><th>Recipe Name</th><th>Calories</th><th>Ingredients</th></tr></thead><tbody>");
 						var len = callback.hits.length;
 						for(i=0;i<len;i++){
-							var str1 = "<tr><td>"+callback.hits[i].recipe.label+"</td><td>"+callback.hits[i].recipe.calories+"</td><td><ul>";
+							var str1 = "<tr><td class=\"hiddenURI\" style=\"display:none\">" + callback.hits[i].recipe.label + "</td><td><img src=\"" + callback.hits[i].recipe.image + "\" alt=\"foodpic\"></td><td>"+callback.hits[i].recipe.label+"</td><td>"+callback.hits[i].recipe.calories+"</td><td><ul>";
 							var len2 = callback.hits[i].recipe.ingredients.length;
 							var s = "<li>";
 							var c = "</li>";
@@ -222,10 +222,10 @@
 					},
 					success: function(callback){
 						$("#results").html("");
-						$("#results").append("<thead><tr><th>Recipe Name</th><th>Calories</th><th>Ingredients</th></tr></thead><tbody>");
+						$("#results").append("<thead><tr><th>Image</th><th>Recipe Name</th><th>Calories</th><th>Ingredients</th></tr></thead><tbody>");
 						var len = callback.hits.length;
 						for(i=0;i<len;i++){
-							var str1 = "<tr><td>"+callback.hits[i].recipe.label+"</td><td>"+callback.hits[i].recipe.calories+"</td><td><ul>";
+							var str1 = "<tr><td class=\"hiddenURI\" style=\"display:none\">" + callback.hits[i].recipe.label + "</td><td><img src=\"" + callback.hits[i].recipe.image + "\" alt=\"foodpic\"></td><td>"+callback.hits[i].recipe.label+"</td><td>"+callback.hits[i].recipe.calories+"</td><td><ul>";
 							var len2 = callback.hits[i].recipe.ingredients.length;
 							var s = "<li>";
 							var c = "</li>";
@@ -253,5 +253,17 @@
 		if(isset($_GET['advsub'])) { ?>
 			<script>adv();</script>
 	<?php } ?>
+	
+<script type="text/javascript">
+
+$(document).on("click", "#results tr", function(e) {
+
+        var recipeURI = $(this).find(".hiddenURI").html();
+        window.location.href = "http://cscilab.bc.edu/~waalkes/cooking/recipe.php?recipe=" + recipeURI;
+
+});
+
+</script>
+
 </body>
 </html>
