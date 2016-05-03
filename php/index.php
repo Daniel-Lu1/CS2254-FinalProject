@@ -25,9 +25,11 @@ session_start();
 					if($_SESSION['username'] == 'chefsidekick@yahoo.com'){
 					echo '<button onclick="location.href = \'logout.php\';" id="logout">Log out</button>';
 					echo '<button onclick="location.href = \'admin2.php\';" id="adminpage">Admin Page</button>';
+					echo '<button onclick="location.href = \'displayrecipes.php\';" id="display">Show Saved Recipes</button>';
 					}
 					else{
 					echo '<button onclick="location.href = \'logout.php\';" id="logout">Log out</button>';
+					echo '<button onclick="location.href = \'displayrecipes.php\';" id="display">Show Saved Recipes</button>';
 					}
 				}
 				else{
