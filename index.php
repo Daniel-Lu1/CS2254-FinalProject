@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <head>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
@@ -16,11 +19,22 @@
 				<input type="submit" id="redirect" value="Advanced Search">
 			</form>
 		</div>
+		<div class="userbuttons">
+			<?php
+				if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true){
+				echo '<button onclick="location.href = \'logout.php\';" id="logout">Log out</button>';
+				}
+				else{
+				echo '
+			<button onclick="location.href = \'signup.html\';" id="signup">Sign up</button>
+			<button onclick="location.href = \'login.html\';" id="login">Login</button>';
+			}
+			?>
+		</div>
 	</div>
 	<script>
 		$(document).ready(function(){
 			$("#adv").click(function(){
-
 			})
 		})
 	</script>
