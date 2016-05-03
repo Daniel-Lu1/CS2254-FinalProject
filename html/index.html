@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+<body>
+	<div id="home">
+		<p id="title">The Cookbook</p><br>
+		<div id="h-box">
+			<form method="get" id="search" action="results.php">
+				<input type="text" name="name" id="name" placeholder="Enter a keyword...">
+				<input type="submit" name="submit" id="submit" value="Search">
+			</form>
+			<br>
+			<form method="post" action="adv.php">
+				<input type="submit" id="redirect" value="Advanced Search">
+			</form>
+		</div>
+	</div>
+	<script>
+		$(document).ready(function(){
+			$("#adv").click(function(){
+
+			})
+		})
+	</script>
+</body>
+</html>
