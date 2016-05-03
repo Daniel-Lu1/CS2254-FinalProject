@@ -14,7 +14,12 @@
 	<div class="inner fourth"></div>
 	<div class="inner fifth"></div>
 </div>
+<br>
 
+<form method="post" action="saveRecipe.php" id="saveRecipeForm">
+	<input type="submit" name="saveRecipeButton" id="saveRecipeButton" value="Save this Recipe!">
+	<input type="hidden" name="recipeNameHidden" id="recipeNameHidden">
+</form>
 
 <?php
 
@@ -55,6 +60,7 @@ echo '<script>
 						};
 						$("div.fourth").replaceWith("<h1>Ingredients:" + str2 + "</h1>");
 						$("div.fifth").replaceWith("<h1>" + callback.hits[0].recipe.url + "</h1>");
+						$("#recipeNameHidden").val(callback.hits[0].recipe.label);
 				}
 			});
 		};
