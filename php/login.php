@@ -9,7 +9,7 @@ $password = stripslashes($password);
 $username = mysql_real_escape_string($username);
 $password = mysql_real_escape_string($password);*/
 
-$query = "SELECT * FROM `Chef` WHERE `email` = '".$username."'";
+$query = "SELECT * FROM `Chef` WHERE `email` = '".$username."' AND `password` = '".$password."'";
 $result = perform_query($dbc, $query);
 if (mysqli_num_rows($result)==1){
 session_start();
@@ -30,5 +30,4 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
     echo normal table without member features. 
 }*/
 ?>
-
 
