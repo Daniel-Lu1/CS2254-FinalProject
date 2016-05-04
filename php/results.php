@@ -20,7 +20,8 @@
 		</form>
 	</div>
 	<div class="datagrid">
-		<table id="results"><tr><th>Recipe Name</th><th>Summary</th><th>Calories</th><th>Ingredients</th></tr></table>
+		<table id="results"></table>
+		<p id="noresults">Whoops! Looks like your search didn't come up with any recipes. Try again!</p>
 	</div>
 	<script>
 		$(document).ready(function(){
@@ -35,33 +36,35 @@
 				dataType: "jsonp",
 				data: {
 					q: $("#name").val(),
-					//from:0,
-					//to:100,
-					//calories: "gte 250, lte 500",
 					api_id:  "61496f24",
 					api_key: "df682debbdd8c22dd3776834d4b83a41"
 				},
 				success: function(callback){
-					$("#results").html("");
-					$("#results").append("<thead><tr><th>Image</th><th>Recipe Name</th><th>Calories</th><th>Ingredients</th></tr></thead><tbody>");
 					var len = callback.hits.length;
-					for(i=0;i<len;i++){
-						var str1 = "<tr><td class=\"hiddenURI\" style=\"display:none\">" + callback.hits[i].recipe.label + "</td><td><img src=\"" + callback.hits[i].recipe.image + "\" alt=\"foodpic\"></td><td>"+callback.hits[i].recipe.label+"</td><td>"+callback.hits[i].recipe.calories+"</td><td><ul>";
-						var len2 = callback.hits[i].recipe.ingredients.length;
-						var s = "<li>";
-						var c = "</li>";
-						var str2 = "";
-						for(j=0;j<len2;j++){
-							var line = callback.hits[i].recipe.ingredients[j].text;
-							var st = s.concat(line);
-							var fin = st.concat(c);
-							str2 = str2.concat(fin);
+					if(len==0){
+						$("#results").hide();
+						$("#noresults").show();
+					}else{
+						$("#noresults").hide();
+						$("#results").append("<thead><tr><th>Image</th><th>Recipe Name</th><th>Calories</th><th>Ingredients</th></tr></thead><tbody>");
+						for(i=0;i<len;i++){
+							var str1 = "<tr><td class=\"hiddenURI\" style=\"display:none\">" + callback.hits[i].recipe.label + "</td><td><img src=\"" + callback.hits[i].recipe.image + "\" alt=\"foodpic\"></td><td>"+callback.hits[i].recipe.label+"</td><td>"+callback.hits[i].recipe.calories.toFixed(2)+"</td><td><ul>";
+							var len2 = callback.hits[i].recipe.ingredients.length;
+							var s = "<li>";
+							var c = "</li>";
+							var str2 = "";
+							for(j=0;j<len2;j++){
+								var line = callback.hits[i].recipe.ingredients[j].text;
+								var st = s.concat(line);
+								var fin = st.concat(c);
+								str2 = str2.concat(fin);
+							};
+							var str3 = "</ul></td></tr>";
+							var str = str1.concat(str2,str3);
+							$("#results").append(str);
 						};
-						var str3 = "</ul></td></tr>";
-						var str = str1.concat(str2,str3);
-						$("#results").append(str);
-					};
-					$("#results").append("</tbody>");
+						$("#results").append("</tbody>");
+					}
 				}
 			});			
 		};
@@ -94,156 +97,54 @@
 				var high = $_GET['high'];
 			}
 			var cal = "gte " + low + "," + "lte " + high;
-			console.log($_GET['key']+" "+$_GET['num']+" "+$_GET['diet']+" "+$_GET['health']+" "+$_GET['low']+" "+$_GET['high']+" "+cal);
+			var params = {
+				q: key,
+				from: 0,
+				to: num,
+				calories: cal,
+				api_id:  "61496f24",
+				api_key: "df682debbdd8c22dd3776834d4b83a41"
+			};
 			if(diet!=null && health!=null){
-				var request = $.ajax({
+				params.diet = diet;
+				params.health = health;
+			}else if(diet==null && health!=null)
+				params.health = health;
+			else if(diet!=null && health==null)
+				params.diet = diet;
+			var request = $.ajax({
 					url: "https://api.edamam.com/search",
 					jsonp: "callback",
 					dataType: "jsonp",
-					data: {
-						q: key,
-						from: 0,
-						to: num,
-						diet: diet,
-						health: health,
-						calories: cal,
-						api_id:  "61496f24",
-						api_key: "df682debbdd8c22dd3776834d4b83a41"
-					},
+					data: params,
 					success: function(callback){
-						$("#results").html("");
-						$("#results").append("<thead><tr><th>Recipe Name</th><th>Calories</th><th>Ingredients</th></tr></thead><tbody>");
 						var len = callback.hits.length;
-						for(i=0;i<len;i++){
-							var str1 = "<tr><td class=\"hiddenURI\" style=\"display:none\">" + callback.hits[i].recipe.label + "</td><td><img src=\"" + callback.hits[i].recipe.image + "\" alt=\"foodpic\"></td><td>"+callback.hits[i].recipe.label+"</td><td>"+callback.hits[i].recipe.calories+"</td><td><ul>";
-							var len2 = callback.hits[i].recipe.ingredients.length;
-							var s = "<li>";
-							var c = "</li>";
-							var str2 = "";
-							for(j=0;j<len2;j++){
-								var line = callback.hits[i].recipe.ingredients[j].text;
-								var st = s.concat(line);
-								var fin = st.concat(c);
-								str2 = str2.concat(fin);
+						if(len==0){
+							$("#results").hide();
+							$("#noresults").show();
+						}else{
+							$("#noresults").hide();
+							$("#results").append("<thead><tr><th>Recipe Name</th><th>Calories</th><th>Ingredients</th></tr></thead><tbody>");
+							for(i=0;i<len;i++){
+								var str1 = "<tr><td class=\"hiddenURI\" style=\"display:none\">" + callback.hits[i].recipe.label + "</td><td><img src=\"" + callback.hits[i].recipe.image + "\" alt=\"foodpic\"></td><td>"+callback.hits[i].recipe.label+"</td><td>"+callback.hits[i].recipe.calories.toFixed(2)+"</td><td><ul>";
+								var len2 = callback.hits[i].recipe.ingredients.length;
+								var s = "<li>";
+								var c = "</li>";
+								var str2 = "";
+								for(j=0;j<len2;j++){
+									var line = callback.hits[i].recipe.ingredients[j].text;
+									var st = s.concat(line);
+									var fin = st.concat(c);
+									str2 = str2.concat(fin);
+								};
+								var str3 = "</ul></td></tr>";
+								var str = str1.concat(str2,str3);
+								$("#results").append(str);
 							};
-							var str3 = "</ul></td></tr>";
-							var str = str1.concat(str2,str3);
-							$("#results").append(str);
-						};
-						$("#results").append("</tbody>");
+							$("#results").append("</tbody>");
+						}
 					}
 				});
-			}else if(diet==null && health!=null){
-				var request = $.ajax({
-					url: "https://api.edamam.com/search",
-					jsonp: "callback",
-					dataType: "jsonp",
-					data: {
-						q: key,
-						from: 0,
-						to: num,
-						health: health,
-						calories: cal,
-						api_id:  "61496f24",
-						api_key: "df682debbdd8c22dd3776834d4b83a41"
-					},
-					success: function(callback){
-						$("#results").html("");
-						$("#results").append("<thead><tr><th>Recipe Name</th><th>Calories</th><th>Ingredients</th></tr></thead><tbody>");
-						var len = callback.hits.length;
-						for(i=0;i<len;i++){
-							var str1 = "<tr><td class=\"hiddenURI\" style=\"display:none\">" + callback.hits[i].recipe.label + "</td><td><img src=\"" + callback.hits[i].recipe.image + "\" alt=\"foodpic\"></td><td>"+callback.hits[i].recipe.label+"</td><td>"+callback.hits[i].recipe.calories+"</td><td><ul>";
-							var len2 = callback.hits[i].recipe.ingredients.length;
-							var s = "<li>";
-							var c = "</li>";
-							var str2 = "";
-							for(j=0;j<len2;j++){
-								var line = callback.hits[i].recipe.ingredients[j].text;
-								var st = s.concat(line);
-								var fin = st.concat(c);
-								str2 = str2.concat(fin);
-							};
-							var str3 = "</ul></td></tr>";
-							var str = str1.concat(str2,str3);
-							$("#results").append(str);
-						};
-						$("#results").append("</tbody>");
-					}
-				});
-			}else if(diet!=null && health==null){
-				var request = $.ajax({
-					url: "https://api.edamam.com/search",
-					jsonp: "callback",
-					dataType: "jsonp",
-					data: {
-						q: key,
-						from: 0,
-						to: num,
-						diet: diet,
-						calories: cal,
-						api_id:  "61496f24",
-						api_key: "df682debbdd8c22dd3776834d4b83a41"
-					},
-					success: function(callback){
-						$("#results").html("");
-						$("#results").append("<thead><tr><th>Image</th><th>Recipe Name</th><th>Calories</th><th>Ingredients</th></tr></thead><tbody>");
-						var len = callback.hits.length;
-						for(i=0;i<len;i++){
-							var str1 = "<tr><td class=\"hiddenURI\" style=\"display:none\">" + callback.hits[i].recipe.label + "</td><td><img src=\"" + callback.hits[i].recipe.image + "\" alt=\"foodpic\"></td><td>"+callback.hits[i].recipe.label+"</td><td>"+callback.hits[i].recipe.calories+"</td><td><ul>";
-							var len2 = callback.hits[i].recipe.ingredients.length;
-							var s = "<li>";
-							var c = "</li>";
-							var str2 = "";
-							for(j=0;j<len2;j++){
-								var line = callback.hits[i].recipe.ingredients[j].text;
-								var st = s.concat(line);
-								var fin = st.concat(c);
-								str2 = str2.concat(fin);
-							};
-							var str3 = "</ul></td></tr>";
-							var str = str1.concat(str2,str3);
-							$("#results").append(str);
-						};
-						$("#results").append("</tbody>");
-					}
-				});
-			}else{
-				var request = $.ajax({
-					url: "https://api.edamam.com/search",
-					jsonp: "callback",
-					dataType: "jsonp",
-					data: {
-						q: key,
-						from: 0,
-						to: num,
-						calories: cal,
-						api_id:  "61496f24",
-						api_key: "df682debbdd8c22dd3776834d4b83a41"
-					},
-					success: function(callback){
-						$("#results").html("");
-						$("#results").append("<thead><tr><th>Image</th><th>Recipe Name</th><th>Calories</th><th>Ingredients</th></tr></thead><tbody>");
-						var len = callback.hits.length;
-						for(i=0;i<len;i++){
-							var str1 = "<tr><td class=\"hiddenURI\" style=\"display:none\">" + callback.hits[i].recipe.label + "</td><td><img src=\"" + callback.hits[i].recipe.image + "\" alt=\"foodpic\"></td><td>"+callback.hits[i].recipe.label+"</td><td>"+callback.hits[i].recipe.calories+"</td><td><ul>";
-							var len2 = callback.hits[i].recipe.ingredients.length;
-							var s = "<li>";
-							var c = "</li>";
-							var str2 = "";
-							for(j=0;j<len2;j++){
-								var line = callback.hits[i].recipe.ingredients[j].text;
-								var st = s.concat(line);
-								var fin = st.concat(c);
-								str2 = str2.concat(fin);
-							};
-							var str3 = "</ul></td></tr>";
-							var str = str1.concat(str2,str3);
-							$("#results").append(str);
-						};
-						$("#results").append("</tbody>");
-					}
-				});
-			}
 		};
 	</script>
 	<?php
@@ -255,14 +156,10 @@
 	<?php } ?>
 	
 <script type="text/javascript">
-
 $(document).on("click", "#results tr", function(e) {
-
         var recipeURI = $(this).find(".hiddenURI").html();
         window.location.href = "http://cscilab.bc.edu/~waalkes/cooking/recipe.php?recipe=" + recipeURI;
-
 });
-
 </script>
 
 </body>

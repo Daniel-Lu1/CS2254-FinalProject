@@ -5,7 +5,7 @@
 </head>
 <body>
 	<form method="get" action="results.php">
-		<label>Keyword(s): </label><input type="text" name="key" placeholder="Enter a keyword"><br>
+		<label>Keyword(s)<i class="req">*</i>: </label><input type="text" name="key" placeholder="Enter a keyword"><br>
 		<label>Number of Results: </label><input type="text" name="num" placeholder="Enter a maximum number of results to show"><br>
 		<label>Select a diet label: </label><br>
 			<div class="diets">
