@@ -21,19 +21,13 @@ session_start();
 	    <!-- Brand and toggle get grouped for better mobile display -->
 	    <!--
 	    <div class="navbar-header">
-	      <a class="navbar-brand" href="#">Cookbook</a>
+	      <a class="navbar-brand" href="http://cscilab.bc.edu/~borisenk/test/index.php">Cookbook</a>
 	    </div>
 		-->
 
 	    <!-- Collect the nav links, forms, and other content for toggling -->
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-	      <form class="navbar-form navbar-left" role="search">
-	        <div class="form-group">
-	          <input type="text" class="form-control" placeholder="Enter a Keyword">
-	        </div>
-	        <button type="submit" class="btn btn-default">Search</button>
-	      </form>
-	      <?php
+	        <?php
 				if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true){
 					if($_SESSION['username'] == 'chefsidekick@yahoo.com'){
 					echo '<button class="btn btn-default navbar-btn navbar-nav navbar-right" onclick="location.href = \'admin2.php\';" id="adminpage">Admin Page</button>';
@@ -41,7 +35,7 @@ session_start();
 					echo '<button class="btn btn-default navbar-btn navbar-nav navbar-right" onclick="location.href = \'logout.php\';" id="logout">Log out</button>';
 					}
 					else{
-					echo '<button class="btn btn-default navbar-btn navbar-nav navbar-right" onclick="location.href = \'displayrecipes.php\';" id="display">Show Saved Recipes</button>';
+					echo '<button class="btn btn-default navbar-btn navbar-nav navbar-right" onclick="location.href = \'http://cscilab.bc.edu/~waalkes/cooking/displayRecipes.php\';" id="display">Show Saved Recipes</button>';
 					echo '<button class="btn btn-default navbar-btn navbar-nav navbar-right" onclick="location.href = \'logout.php\';" id="logout">Log out</button>';
 					}
 				}
@@ -54,17 +48,15 @@ session_start();
 	    </div><!-- /.navbar-collapse -->
 	  </div><!-- /.container-fluid -->
 	</nav>
-	<div class="home">
+	<div class="home"> 
 		<p id="title">The Cookbook</p><br>
 		<div id="h-box">
 			<form method="get" id="search" action="results.php">
-				<input type="text" name="name" id="name" placeholder="Enter a keyword...">
+				<input type="text" name="name" id="name" placeholder="Enter a keyword">
 				<input type="submit" class="button" name="submit" id="submit" value="Search">
 			</form>
 			<br>
-			<form method="post" action="adv.php">
-				<input type="submit" class="button" id="redirect" value="Advanced Search">
-			</form>
+			<button onclick="location.href ='adv.php'" type="button" class="button">Advanced Search</button>
 		</div>
 	</div>
 </body>
