@@ -33,8 +33,24 @@ session_start();
 	        </div>
 	        <button type="submit" class="btn btn-default">Search</button>
 	      </form>
-	      <button type="button" class="btn btn-default navbar-btn navbar-nav navbar-right">Sign in</button>
-	      <button type="button" class="btn btn-default navbar-btn navbar-nav navbar-right">Sign up</button>
+	      <?php
+				if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true){
+					if($_SESSION['username'] == 'chefsidekick@yahoo.com'){
+					echo '<button class="btn btn-default navbar-btn navbar-nav navbar-right" onclick="location.href = \'admin2.php\';" id="adminpage">Admin Page</button>';
+					echo '<button class="btn btn-default navbar-btn navbar-nav navbar-right" onclick="location.href = \'displayrecipes.php\';" id="display">Show Saved Recipes</button>';
+					echo '<button class="btn btn-default navbar-btn navbar-nav navbar-right" onclick="location.href = \'logout.php\';" id="logout">Log out</button>';
+					}
+					else{
+					echo '<button class="btn btn-default navbar-btn navbar-nav navbar-right" onclick="location.href = \'displayrecipes.php\';" id="display">Show Saved Recipes</button>';
+					echo '<button class="btn btn-default navbar-btn navbar-nav navbar-right" onclick="location.href = \'logout.php\';" id="logout">Log out</button>';
+					}
+				}
+				else{
+				echo '
+			<button class="btn btn-default navbar-btn navbar-nav navbar-right" onclick="location.href = \'signup.html\';" id="signup">Sign up</button>
+			<button class="btn btn-default navbar-btn navbar-nav navbar-right" onclick="location.href = \'login.html\';" id="login">Sign in</button>';
+			}
+			?>
 	    </div><!-- /.navbar-collapse -->
 	  </div><!-- /.container-fluid -->
 	</nav>
@@ -49,26 +65,6 @@ session_start();
 			<form method="post" action="adv.php">
 				<input type="submit" class="button" id="redirect" value="Advanced Search">
 			</form>
-		</div>
-		<div class="userbuttons">
-			<?php
-				if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true){
-					if($_SESSION['username'] == 'chefsidekick@yahoo.com'){
-					echo '<button onclick="location.href = \'logout.php\';" id="logout">Log out</button>';
-					echo '<button onclick="location.href = \'admin2.php\';" id="adminpage">Admin Page</button>';
-					echo '<button onclick="location.href = \'displayrecipes.php\';" id="display">Show Saved Recipes</button>';
-					}
-					else{
-					echo '<button onclick="location.href = \'logout.php\';" id="logout">Log out</button>';
-					echo '<button onclick="location.href = \'displayrecipes.php\';" id="display">Show Saved Recipes</button>';
-					}
-				}
-				else{
-				echo '
-			<button onclick="location.href = \'signup.html\';" id="signup">Sign up</button>
-			<button onclick="location.href = \'login.html\';" id="login">Login</button>';
-			}
-			?>
 		</div>
 	</div>
 </body>
