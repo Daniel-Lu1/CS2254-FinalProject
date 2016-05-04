@@ -22,7 +22,15 @@ session_start();
 		<div class="userbuttons">
 			<?php
 				if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true){
-				echo '<button onclick="location.href = \'logout.php\';" id="logout">Log out</button>';
+					if($_SESSION['username'] == 'chefsidekick@yahoo.com'){
+					echo '<button onclick="location.href = \'logout.php\';" id="logout">Log out</button>';
+					echo '<button onclick="location.href = \'admin2.php\';" id="adminpage">Admin Page</button>';
+					echo '<button onclick="location.href = \'displayrecipes.php\';" id="display">Show Saved Recipes</button>';
+					}
+					else{
+					echo '<button onclick="location.href = \'logout.php\';" id="logout">Log out</button>';
+					echo '<button onclick="location.href = \'displayrecipes.php\';" id="display">Show Saved Recipes</button>';
+					}
 				}
 				else{
 				echo '

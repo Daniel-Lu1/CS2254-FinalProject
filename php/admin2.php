@@ -1,7 +1,8 @@
 <?php
+session_start();
+if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true && $_SESSION['username'] == 'chefsidekick@yahoo.com'){
 	include('dbconn.php');
-?>
-<!DOCTYPE html>
+	echo '<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -11,9 +12,8 @@
 	<title>Cooking Admin Page</title>
 </head>
 <body>
-<h1>pagin</h1>
+<h1>pagin</h1>';
 
-<?php
 			// pagination support
 			$itemsPerPage = 10;
 	
@@ -22,23 +22,24 @@
 			$start = findstart();
 	
 			createDataTable( $start, $itemsPerPage );
-		?>
+		
 
 
-		<?php
+		
 			createPageLinks( $start, $pages, $itemsPerPage );
 			if (isset($_GET['mailButton'])){
 				mailForm();
 			};
-
 echo "<form method=\"get\">";
 echo "<input type=\"submit\" name=\"mailButton\" id=\"mailButton\" value=\"Send Mail!\"/>";
 echo "</form>";
+echo "</body>";
+echo "</html>";
+}
+else{
+echo "You must be logged in as an admin to view this page...";
+}
 ?>
-		
-</body>
-</html>
-
 <?php
 function createDataTable($start, $itemsPerPage){
 	$qry = "SELECT `id`, `firstName`, `lastName`, `email` FROM `Chef` LIMIT $start, $itemsPerPage";
@@ -64,7 +65,6 @@ function createDataTable($start, $itemsPerPage){
 	}
 	echo "</table>\n";
 }
-
 function findpages($itemsPerPage){
 	if (isset($_GET['p'])){
 		// get it from the URL if we've already been here
@@ -123,9 +123,7 @@ function createPageLinks($start, $pages, $itemsPerPage){
 		}
 	}
 }
-
 function mailForm(){
-
 	echo '<div id="emailFormDiv">
 	<h1>Mail Users</h1>
 		<fieldset>

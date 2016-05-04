@@ -49,5 +49,5 @@ function incorrect(){
 function correct(){
 	echo '<a href="http://cscilab.bc.edu/~waalkes/cooking/cooking.php"><h1>Registered! Click here to be redirected back to the page!</h1></a>';
 }
-
+//fix these lines above
 ?>
