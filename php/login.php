@@ -15,12 +15,14 @@ if (mysqli_num_rows($result)==1){
 session_start();
     $_SESSION['loggedin'] = true;
     $_SESSION['username'] = $username;
+    $row = mysqli_fetch_row($result);
+    $_SESSION['firstname'] = $row[1];
     header("Location: index.php");
 	exit();
 }
 else{
 echo '<h1>Incorrect Login Information</h1>';
-echo '<a href="http://cscilab.bc.edu/~ludg/finalproject/login.html">Click here to try again.</a>';
+echo '<a href="http://cscilab.bc.edu/~borisenk/test/login.html">Click here to try again.</a>';
 }
 /*In PHP file with the table displayed, 
 session_start();
