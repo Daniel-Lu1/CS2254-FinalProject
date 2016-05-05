@@ -52,7 +52,7 @@ session_start();
 					echo '<button class="btn btn-default navbar-btn navbar-nav navbar-right" onclick="location.href = \'logout.php\';" id="logout">Log out</button>';
 					}
 					else{
-					echo '<button class="btn btn-default navbar-btn navbar-nav navbar-right" onclick="location.href = \'http://cscilab.bc.edu/~waalkes/cooking/displayRecipes.php\';" id="display">Show Saved Recipes</button>';
+					echo '<button class="btn btn-default navbar-btn navbar-nav navbar-right" onclick="location.href = \'displayRecipes.php\';" id="display">Show Saved Recipes</button>';
 
 					echo '<button class="btn btn-default navbar-btn navbar-nav navbar-right" onclick="location.href = \'logout.php\';" id="logout">Log out</button>';
 					}
