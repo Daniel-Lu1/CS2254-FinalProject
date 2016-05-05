@@ -59,6 +59,7 @@ session_start();
 	    </div><!-- /.navbar-collapse -->
 	  </div><!-- /.container-fluid -->
 	</nav>
+	<button class="btn btn-default" onclick="location.href = 'yelp.php';" id="display">Don't Feel like Cooking?</button>
 	<div class="datagrid">
 		<table id="results"></table>
 	</div>
