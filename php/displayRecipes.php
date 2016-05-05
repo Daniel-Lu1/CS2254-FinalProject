@@ -132,7 +132,9 @@ $(document).ready( function(){
 					api_key: "df682debbdd8c22dd3776834d4b83a41"
 				},
 				success: function(callback){
-						var str1 = "<tr><td class=\"hiddenURI\" style=\"display:none\">" + callback.hits[0].recipe.label + "</td><td><img src=\"" + callback.hits[0].recipe.image + "\" alt=\"foodpic\"></td><td>"+callback.hits[0].recipe.label+"</td><td>"+callback.hits[0].recipe.calories+"</td><td><ul>";
+						var cal = callback.hits[0].recipe.calories;
+						var roundCal = parseInt(cal);
+						var str1 = "<tr><td class=\"hiddenURI\" style=\"display:none\">" + callback.hits[0].recipe.label + "</td><td><img src=\"" + roundCal + "\" alt=\"foodpic\"></td><td>"+callback.hits[0].recipe.label+"</td><td>"+callback.hits[0].recipe.calories+"</td><td><ul>";
 						var len2 = callback.hits[0].recipe.ingredients.length;
 						var s = "<li>";
 						var c = "</li>";
