@@ -75,8 +75,10 @@ session_start();
 	<div class="inner fifth"></div>
 </div>
 <div id="sixth"></div>
+
 <form method="post" action="saveRecipe.php" id="saveRecipeForm">
 	<button class="button" type="submit" name="saveRecipeButton" id="saveRecipeButton">Save this Recipe!</button>
+	<input type="hidden" value="" name="recipeNameHidden" id="recipeNameHidden">
 </form>
 
 
@@ -121,7 +123,7 @@ echo '<script>
 							str2 = str2.concat(fin);
 						};
 						$("div.fourth").replaceWith("<h4>Ingredients:</h4><br><div class=\'containerX\'><ul id=\'list-unstyled\'" + str2 + "</ul></div>");
-						$("#recipeNameHidden").val(callback.hits[0].recipe.uri);
+						$("#recipeNameHidden").val(callback.hits[0].recipe.label);
 						$(document.body).append("<center><iframe class=' . '\'iframe\'' . ' src=" + callback.hits[0].recipe.url + "></iframe></div></center>");
 				}
 			});
