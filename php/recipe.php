@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE php>
 <html lang="en">
 <head>
@@ -15,16 +18,18 @@
 	<div class="inner fifth"></div>
 </div>
 <br>
-
+<?php
+if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true){
+echo '
 <form method="post" action="saveRecipe.php" id="saveRecipeForm">
 	<input type="submit" name="saveRecipeButton" id="saveRecipeButton" value="Save this Recipe!">
 	<input type="hidden" name="recipeNameHidden" id="recipeNameHidden">
-</form>
+</form>';
+}
+?>
 
 <?php
-
 include("dbconn.php");
-
 $recipeName = $_GET['recipe'];
 echo '<script>
 		$(document).ready(function(){
@@ -65,7 +70,6 @@ echo '<script>
 			});
 		};
 	</script>'
-
 ?>
 
 
