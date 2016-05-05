@@ -7,18 +7,38 @@ session_start();
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 	<meta charset="utf-8" />
 	<title>Saved Recipes</title>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 <body>
 <nav class="navbar navbar-default">
 	  <div class="container-fluid">
 	    <!-- Brand and toggle get grouped for better mobile display -->
-	    <!--
 	    <div class="navbar-header">
 	      <a class="navbar-brand" href="http://cscilab.bc.edu/~borisenk/test/index.php">Cookbook</a>
 	    </div>
-		-->
-
+		<form class="navbar-form navbar-left" role="search" method="get" id="search" action="results.php">
+          <input type="text" class="form-control" id="name" name="name" placeholder="Enter a keyword"
+          	<?php 
+				if(isset($_GET['submit'])){ 
+					echo 'value="'.$_GET['name'].'"';
+				} 
+				if(isset($_GET['advsub'])){
+					echo 'value="'.$_GET['key'].'"';
+				}
+			?>
+          required>
+          <input type="submit" class="btn btn-default" name="submit" id="submit" value="Search">
+          <button onclick="location.href ='adv.php'" type="button" class="btn btn-default">Advanced Search</button>
+    	</form>
 	    <!-- Collect the nav links, forms, and other content for toggling -->
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	      <?php
@@ -40,7 +60,6 @@ session_start();
 	    </div><!-- /.navbar-collapse -->
 	  </div><!-- /.container-fluid -->
 	</nav>
-
 <div class="datagrid">
 		<table id="results"><tr><th>Recipe Name</th><th>Summary</th><th>Calories</th><th>Ingredients</th></tr></table>
 </div>
