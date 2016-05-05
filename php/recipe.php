@@ -5,11 +5,43 @@ session_start();
 <html lang="en">
 <head>
 	<meta charset="utf-8" />
-	<title>Club Home Page</title>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+	<title>The Cookbook</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 </head>
 <body>
+<nav class="navbar navbar-default">
+	  <div class="container-fluid">
+	    <!-- Brand and toggle get grouped for better mobile display -->
+	    <!--
+	    <div class="navbar-header">
+	      <a class="navbar-brand" href="http://cscilab.bc.edu/~borisenk/test/index.php">Cookbook</a>
+	    </div>
+		-->
 
+	    <!-- Collect the nav links, forms, and other content for toggling -->
+	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	      <?php
+				if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true){
+					if($_SESSION['username'] == 'chefsidekick@yahoo.com'){
+					echo '<button class="btn btn-default navbar-btn navbar-nav navbar-right" onclick="location.href = \'admin2.php\';" id="adminpage">Admin Page</button>';
+					echo '<button class="btn btn-default navbar-btn navbar-nav navbar-right" onclick="location.href = \'displayrecipes.php\';" id="display">Show Saved Recipes</button>';
+					echo '<button class="btn btn-default navbar-btn navbar-nav navbar-right" onclick="location.href = \'logout.php\';" id="logout">Log out</button>';
+					}
+					else{
+					echo '<button class="btn btn-default navbar-btn navbar-nav navbar-right" onclick="location.href = \'http://cscilab.bc.edu/~waalkes/cooking/displayRecipes.php\';" id="display">Show Saved Recipes</button>';
+					echo '<button class="btn btn-default navbar-btn navbar-nav navbar-right" onclick="location.href = \'logout.php\';" id="logout">Log out</button>';
+					}
+				}
+				else{
+				echo '
+			<button class="btn btn-default navbar-btn navbar-nav navbar-right" onclick="location.href = \'signup.html\';" id="signup">Sign up</button>
+			<button class="btn btn-default navbar-btn navbar-nav navbar-right" onclick="location.href = \'login.html\';" id="login">Sign in</button>';
+			}
+			?>
+	    </div><!-- /.navbar-collapse -->
+	  </div><!-- /.container-fluid -->
+	</nav>
+	
 <div id="recipePhoto" name="recipePhoto">
 	<div class="inner first"></div>
 	<div class="inner second"></div>
@@ -24,6 +56,7 @@ echo '
 <form method="post" action="saveRecipe.php" id="saveRecipeForm">
 	<input type="submit" name="saveRecipeButton" id="saveRecipeButton" value="Save this Recipe!">
 	<input type="hidden" name="recipeNameHidden" id="recipeNameHidden">
+	<input type="submit" name="returnToSearch" id="returnToSearch" value="Return to Search!">
 </form>';
 }
 ?>
