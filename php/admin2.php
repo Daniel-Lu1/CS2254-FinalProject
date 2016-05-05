@@ -8,7 +8,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true && $_SESSION['
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/admin.css">
 	<title>Cooking Admin Page</title>
 </head>
 <body>
@@ -30,9 +30,14 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true && $_SESSION['
 			if (isset($_GET['mailButton'])){
 				mailForm();
 			};
-echo "<form method=\"get\">";
-echo "<input type=\"submit\" name=\"mailButton\" id=\"mailButton\" value=\"Send Mail!\"/>";
-echo "</form>";
+echo '<fieldset>
+			<legend>Mail Your Chefs</legend>
+			<form method="post" action="chefMail.php" name="MyMail">
+			<label>Subject: </label><input type="text" name="subj" required><br>
+			<label>Your Message: <br><label><textarea rows="5" cols="50" type="text" name="message" required></textarea><br>
+			<button type="submit" name="go" class="submitbutton">Send Your Message</button>
+			</form>
+	</fieldset>';
 echo "</body>";
 echo "</html>";
 }
