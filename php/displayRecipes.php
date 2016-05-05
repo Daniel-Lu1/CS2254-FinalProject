@@ -96,7 +96,7 @@ disconnect_from_db($dbc, $recipeResult)
 $(document).on("click", "#results tr", function(e) {
 
         var recipeURI = $(this).find(".hiddenURI").html();
-        window.location.href = "http://cscilab.bc.edu/~waalkes/cooking/recipe.php?recipe=" + recipeURI;
+        window.location.href = "http://cscilab.bc.edu/~borisenk/test/recipe.php?recipe=" + recipeURI;
 
 });
 
