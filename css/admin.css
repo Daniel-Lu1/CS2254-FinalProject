@@ -1,0 +1,25 @@
+body{
+	background-color: AliceBlue;
+	color: Indigo;
+	font-family: "Arial";
+	font-size: 125%;
+	text-align: left;
+}
+
+legend{
+	background-color: skyblue;
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+tr:nth-child(even) {
+    background-color: lightgreen;
+}
+
+tr:nth-child(odd) {
+    background-color: lightpink;
+}
+
