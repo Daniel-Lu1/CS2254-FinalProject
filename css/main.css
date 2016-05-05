@@ -171,9 +171,6 @@ div.dhtmlx_window_active, div.dhx_modal_cover_dv {
 #results tr:hover, tr:focus{
 	background-color: #f8cecf;
 }
-#noresults {
-	width:80%;
-}
 .col-centered{
 	margin:0 auto;
 	float:none;

@@ -61,10 +61,11 @@ session_start();
 	</nav>
 	<div class="datagrid">
 		<table id="results"></table>
-		<p id="noresults">Whoops! Looks like your search didn't come up with any recipes. Try again!</p>
 	</div>
+	<div class="alert alert-danger" id="noresults"><strong>Whoops!</strong> Looks like your search didn't come up with any recipes. Try again!</div>
 	<script>
 		$(document).ready(function(){
+			$("#noresults").hide();
 			$("#submit").click(function(){
 				simple();
 			})

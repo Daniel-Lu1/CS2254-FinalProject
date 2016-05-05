@@ -59,8 +59,8 @@ session_start();
 	    </div><!-- /.navbar-collapse -->
 	  </div><!-- /.container-fluid -->
 	</nav>
-	<form method="get" action="results.php">
-		<div class="containter">
+	<form class="containter" method="get" action="results.php">
+		<div>
 			<div class="form-group row">
 				<label class="col-sm-2 form-control-label">Keyword(s)<i class="req">*</i>: </label>
 				<div class="col-xs-3">
