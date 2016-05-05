@@ -27,7 +27,7 @@ session_start();
 
 	    <!-- Collect the nav links, forms, and other content for toggling -->
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-	        <?php
+	      <?php
 				if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true){
 					if($_SESSION['username'] == 'chefsidekick@yahoo.com'){
 					echo '<button class="btn btn-default navbar-btn navbar-nav navbar-right" onclick="location.href = \'admin2.php\';" id="adminpage">Admin Page</button>';
@@ -52,7 +52,7 @@ session_start();
 		<p id="title">The Cookbook</p><br>
 		<div id="h-box">
 			<form method="get" id="search" action="results.php">
-				<input type="text" name="name" id="name" placeholder="Enter a keyword">
+				<input type="text" name="name" id="name" class="simple" placeholder="Enter a keyword">
 				<input type="submit" class="button" name="submit" id="submit" value="Search">
 			</form>
 			<br>
