@@ -98,7 +98,7 @@ echo '<script>
 						};
 						$("div.fourth").replaceWith("<h1>Ingredients:" + str2 + "</h1>");
 						$("div.fifth").replaceWith("<h1>" + callback.hits[0].recipe.url + "</h1>");
-						$("#recipeNameHidden").val(callback.hits[0].recipe.label);
+						$(document.body).append("<iframe class=' . '\'iframe\'' . ' src=" + callback.hits[0].recipe.url + "></iframe>");
 				}
 			});
 		};
