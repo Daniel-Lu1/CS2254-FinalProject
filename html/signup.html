@@ -2,39 +2,69 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8" />
-	<title>Mexican Food Website</title>
+	<title>Sign Up Form</title>
 	<script type="text/javascript" src="jquery-1.7.2.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="css/cookingCSS.css">
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+	<link rel="stylesheet" type="text/css" href="css/main.css">
 <body>
-
-<h1>Mexican Food</h1>
-
-
-<fieldset id="registerFieldset">
-	<legend>Become a Chef!</legend>
-	<form name="registerChefForm" id="registerChefForm" method="POST" action="registerChef.php" onsubmit="return validateForm();">
-		Name <br>
-		<input type="text" name="firstName" id="firstName" placeholder="First" />
-		<input type="text" name="lastName" id="lastName" placeholder="Last" />
-		<div id="nameWrong" class="wrong"></div>
-		<br> 
-		Email <br>
-		<input type="text" name="registerEmail" id="registerEmail" placeholder="example@website.com" />
-		<div id="emailWrong" class="wrong"></div>
-		<br>
-		Create Password <br>
-		<input type="password" name="registerPassword" id="registerPassword" />
-		<div id="password1Wrong" class="wrong"></div>
-		<br>
-		Confirm Password <br>
-		<input type="password" name="registerPassword2" id="registerPassword2" />
-		<div id="password2Wrong" class="wrong"></div>
-		<div id="passwordWrong" class="wrong"></div>
-		<br>
-		<input type="submit" name="registerChefSubmit" value="Become a Chef!"/>
-	</form>
-</fieldset>
-
+	<nav class="navbar navbar-default">
+	  <div class="container-fluid">
+	    <!-- Brand and toggle get grouped for better mobile display -->
+	    <div class="navbar-header">
+	      <a class="navbar-brand" href="http://cscilab.bc.edu/~borisenk/test/index.php">Cookbook</a>
+	    </div>
+	</nav>
+	<div class="container">
+	    <div class="row">
+	        <div class="col-sm-6 col-md-4 col-md-offset-4">
+	            <h1 class="text-center login-title">Create an Account</h1>
+	            <div class="account-wall">
+					<form name="registerChefForm" class="form-signin" id="registerChefForm" method="POST" action="registerChef.php" onsubmit="return validateForm();">
+						<div class="form-group row">
+							<label class="col-sm-3 form-control-label">Name:</label>
+							<div class="col-xs-3">
+								<input type="text" name="firstName" id="firstName" placeholder="First" required autofocus>
+								<input type="text" name="lastName" id="lastName" placeholder="Last" required>
+								<div id="nameWrong" class="wrong"></div>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-3 form-control-label">Email:</label>
+							<div class="col-xs-3">
+								<input type="text" name="registerEmail" id="registerEmail" placeholder="example@website.com" required>
+								<div id="emailWrong" class="wrong"></div>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-3 form-control-label">Create Password: </label>
+							<div class="col-xs-3">
+								<input type="password" name="registerPassword" id="registerPassword" required>
+								<div id="password1Wrong" class="wrong"></div>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-3 form-control-label">Confirm Password: </label>
+							<div class="col-xs-3">
+								<input type="password" name="registerPassword2" id="registerPassword2" required>
+								<div id="password2Wrong" class="wrong"></div>
+								<div id="passwordWrong" class="wrong"></div>
+							</div>
+						</div>
+						<input type="submit" name="registerChefSubmit" class="btn btn-lg btn-primary btn-block" value="Sign Up"/>
+					</form>
+				</div>
+				<p class="text-center new-account">Already a member? <a href="http://cscilab.bc.edu/~borisenk/test/login.html">Sign in</a></p>
+	        </div>
+	    </div>
+	</div>
 </body>
 </html>
 
