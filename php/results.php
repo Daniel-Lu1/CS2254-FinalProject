@@ -77,6 +77,8 @@ session_start();
 				dataType: "jsonp",
 				data: {
 					q: $("#name").val(),
+					from: 0,
+					to: 20,
 					api_id:  "61496f24",
 					api_key: "df682debbdd8c22dd3776834d4b83a41"
 				},
@@ -114,7 +116,7 @@ session_start();
 			var $_GET = <?php echo json_encode($_GET); ?>;
 			var key = $_GET['key'];
 			if(!$_GET['num']){
-				var num = 10;
+				var num = 20;
 			}else{
 				var num = $_GET['num'];
 			}
