@@ -52,7 +52,7 @@ session_start();
 		<p id="title">The Cookbook</p><br>
 		<div id="h-box">
 			<form method="get" id="search" action="results.php">
-				<input type="text" name="name" id="name" class="simple" placeholder="Enter a keyword">
+				<input type="text" name="name" id="name" class="simple" placeholder="Enter a keyword" required>
 				<input type="submit" class="button" name="submit" id="submit" value="Search">
 			</form>
 			<br>

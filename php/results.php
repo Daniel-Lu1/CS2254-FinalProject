@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <head>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
@@ -29,7 +32,7 @@
 					echo 'value="'.$_GET['key'].'"';
 				}
 			?>
-          >
+          required>
           <input type="submit" class="btn btn-default" name="submit" id="submit" value="Search">
           <button onclick="location.href ='adv.php'" type="button" class="btn btn-default">Advanced Search</button>
     	</form>
