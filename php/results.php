@@ -42,24 +42,26 @@ session_start();
 				if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true){
 					if($_SESSION['username'] == 'chefsidekick@yahoo.com'){
 					echo '<button class="btn btn-default navbar-btn navbar-nav navbar-right" onclick="location.href = \'admin2.php\';" id="adminpage">Admin Page</button>';
-					echo '<button class="btn btn-default navbar-btn navbar-nav navbar-right" onclick="location.href = \'displayRecipes.php\';" id="display">Show Saved Recipes</button>';
+					echo '<button class="btn btn-default navbar-btn navbar-nav navbar-right" onclick="location.href = \'displayrecipes.php\';" id="display">Show Saved Recipes</button>';
 					echo '<button class="btn btn-default navbar-btn navbar-nav navbar-right" onclick="location.href = \'logout.php\';" id="logout">Log out</button>';
+					echo '<button class="btn btn-default navbar-btn navbar-nav navbar-right" onclick="location.href = \'yelp.php\';" id="display">Don\'t Feel like Cooking?</button>';
 					}
 					else{
-					echo '<button class="btn btn-default navbar-btn navbar-nav navbar-right" onclick="location.href = \'displayRecipes.php\';" id="display">Show Saved Recipes</button>';
+					echo '<button class="btn btn-default navbar-btn navbar-nav navbar-right" onclick="location.href = \'http://cscilab.bc.edu/~waalkes/cooking/displayRecipes.php\';" id="display">Show Saved Recipes</button>';
 					echo '<button class="btn btn-default navbar-btn navbar-nav navbar-right" onclick="location.href = \'logout.php\';" id="logout">Log out</button>';
+					echo '<button class="btn btn-default navbar-btn navbar-nav navbar-right" onclick="location.href = \'yelp.php\';" id="display">Don\'t Feel like Cooking?</button>';
 					}
 				}
 				else{
 				echo '
 			<button class="btn btn-default navbar-btn navbar-nav navbar-right" onclick="location.href = \'signup.html\';" id="signup">Sign up</button>
 			<button class="btn btn-default navbar-btn navbar-nav navbar-right" onclick="location.href = \'login.html\';" id="login">Sign in</button>';
+			echo '<button class="btn btn-default navbar-btn navbar-nav navbar-right" onclick="location.href = \'yelp.php\';" id="display">Don\'t Feel like Cooking?</button>';
 			}
 			?>
 	    </div><!-- /.navbar-collapse -->
 	  </div><!-- /.container-fluid -->
 	</nav>
-	<button class="btn btn-default" onclick="location.href = 'yelp.php';" id="display">Don't Feel like Cooking?</button>
 	<div class="datagrid">
 		<table id="results"></table>
 	</div>
@@ -203,7 +205,7 @@ session_start();
 <script type="text/javascript">
 $(document).on("click", "#results tr", function(e) {
         var recipeURI = $(this).find(".hiddenURI").html();
-        window.location.href = "http://cscilab.bc.edu/~borisenk/test/recipe.php?recipe=" + recipeURI;
+        window.location.href = "http://cscilab.bc.edu/~waalkes/cooking/recipe.php?recipe=" + recipeURI;
 });
 </script>
 
