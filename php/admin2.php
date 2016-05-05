@@ -12,8 +12,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true && $_SESSION['
 	<title>Cooking Admin Page</title>
 </head>
 <body>
-<h1>pagin</h1>';
-
+<h1>Admin Page</h1>';
 			// pagination support
 			$itemsPerPage = 10;
 	
@@ -23,8 +22,6 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true && $_SESSION['
 	
 			createDataTable( $start, $itemsPerPage );
 		
-
-
 		
 			createPageLinks( $start, $pages, $itemsPerPage );
 			if (isset($_GET['mailButton'])){
